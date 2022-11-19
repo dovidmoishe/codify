@@ -4,7 +4,7 @@ import "../css/login.css";
 import Axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 export default function Signup() {
   const [details, setDetails] = useContext(UserContext);
@@ -21,33 +21,32 @@ export default function Signup() {
   const signup = async (e) => {
     e.preventDefault();
     if (!details.user || !details.password) {
-        toast.warn("Fill all the credentials",{
-            theme: "light",
-        });
-       
+      toast.warn("Fill all the credentials", {
+        theme: "light",
+      });
+
       return;
     }
     try {
-     const res= await Axios.post("http://localhost:8000/signup", {
+      const res = await Axios.post("http://localhost:8000/signup", {
         user: details.user,
         password: details.password,
       });
 
-      if(res.status===403){
-        toast.warn("User already exist",{
-            theme: "light",
+      if (res.status === 206) {
+        toast.warn("User already exist", {
+          theme: "light",
         });
         return;
       }
 
-      if(res.status===200){
+      if (res.status === 200) {
         navigate(`/${details.user}`);
         return;
       }
     } catch (err) {
       console.log(err);
     }
-    
   };
   return (
     <div className="hero_container">

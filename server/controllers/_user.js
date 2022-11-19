@@ -34,7 +34,7 @@ export const CheckUser=async (req,res)=>{
         return res.status(200).json({message:"Logged in successfully"})
     }
     if(!isUser){
-        return res.status(401).json({messsage:"Credentials donot match"})
+        return res.status(206).json({messsage:"Credentials donot match"})
     }
    
 }

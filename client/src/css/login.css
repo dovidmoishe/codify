@@ -1,0 +1,71 @@
+.login_wrap{
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login_container{
+    height: 350px;
+    width: 350px;
+    background-color: red;
+    background-color: rgb(64,104,130,0.2);
+    border-radius: 10px;
+    padding: 20px;
+}
+.login_container h3{
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+.login_container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80%;
+}
+.login_container form input{
+    margin-bottom: 20px;
+    padding: 15px 15px 15px 20px;
+    background-color: #1A374D;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+}
+.login_container form input::placeholder{
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    opacity: 0.6;
+
+}
+input[type=text]:focus {
+    outline: 2px solid #703EFF;
+    border: none;
+}
+.btn{
+    margin-bottom: 20px;
+    padding: 10px 0px 10px 0px;
+    font-size: 20px;
+    background-color: #703EFF;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+}
+.login_container p{
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+}
+.login_container p h5{
+    font-weight: 500;
+}
+.txt{
+    color: #703EFF;
+    margin-left: 4px;
+    cursor: pointer;
+}

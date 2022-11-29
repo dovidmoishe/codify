@@ -10,6 +10,7 @@ import {
   import Signup from './components/Signup';
   import Login from './components/Login';
   import Profile from './components/Profile';
+  import Editor from './pages/Editor';
 export default function Routes() {
   return (
     <Router>
@@ -21,6 +22,8 @@ export default function Routes() {
             <Route exact path="/signup" element={<Signup/>}>
             </Route>
             <Route exact path="/:name" element={<Profile/>}>
+            </Route>
+            <Route exact path="/editor" element={<Editor/>}> 
             </Route>
         </Switch>
     </Router>

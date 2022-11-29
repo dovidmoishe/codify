@@ -1,9 +1,9 @@
 import React from 'react'
-import Hero_section from '../components/Hero_section'
+import Herosection from '../components/Herosection'
 export default function Home() {
   return (
     <div>
-        <Hero_section/>
+        <Herosection/>
     </div>
   )
 }

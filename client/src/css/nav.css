@@ -33,3 +33,18 @@ nav{
     padding: 5px;
     background-color: #703EFF;
 }
+.profile{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #7C3AED;
+    background-color: #152C40;
+    text-align: center;
+}
+.profile h3{
+    color: #ADCBD7;
+    font-weight: 400;
+    font-size: 30px;
+    
+}

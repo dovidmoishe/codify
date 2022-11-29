@@ -8,16 +8,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
-  //states for user info
+  //state for user info
   const [details,setDetails]=useState({
     user:'',
-    password:''
+    token:''
   })
 
   return  (
     <>
     <UserContext.Provider value={[details,setDetails]}>
-    <ToastContainer autoClose={2000}/>
+    <ToastContainer autoClose={1000}/>
     <Routes/>
     </UserContext.Provider>
     </>

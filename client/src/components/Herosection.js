@@ -2,7 +2,7 @@ import React from "react";
 import Nav from "./Nav";
 import "../css/hero_section.css";
 import { NavLink } from "react-router-dom";
-export default function Hero_section() {
+export default function Herosection() {
   return (
     <>
       <div className="hero_container">

@@ -3,7 +3,7 @@ import express from "express"
 import cors from "cors"
 import connectDb from "./config/db.js";
 import User from "./routes/User.js"
-import Users from "./models/user.model.js";
+import Code from "./routes/Code.js"
 const app=express()
 
 //middleware
@@ -22,20 +22,10 @@ connectDb();
 app.get("/", (req, res) => {
     res.json({ msg: "Success✅" });
   });
-app.post("/log",(req,res)=>{
-    const dbdata=req.body;
-    Users.create(dbdata,(err,data)=>{
-        if(err){
-            res.send(err)
-        }
-        else{
-            res.send(data)
-        }
-    })
 
-})
 //Routes
 app.use(User);
+app.use(Code)
 //server listening to port
 const port=process.env.PORT||8000;
 app.listen(port,()=>{

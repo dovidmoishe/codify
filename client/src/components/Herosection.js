@@ -17,7 +17,7 @@ export default function Herosection() {
             time.
           </p>
           <div className="btnwrapper">
-            <NavLink to={"/login"}>
+            <NavLink to={"/:name"}>
               <div className="btn1">Get Started</div>
             </NavLink>
             <a href="https://github.com/roshan-acharya/noteify">

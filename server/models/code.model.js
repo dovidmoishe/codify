@@ -5,5 +5,5 @@ const codeSchema= mongoose.Schema({
     code:String,
 }
 );
-const Users = mongoose.model("codes",codeSchema)
+const Codes = mongoose.model("codes",codeSchema)
 export default Codes;

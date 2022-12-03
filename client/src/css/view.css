@@ -1,0 +1,12 @@
+.view_container{
+    min-height: 100vh;
+    background-color: #1A374D;
+    overflow: hidden;
+}
+.view{
+    margin-left: 60px;
+}
+.CodeMirror{
+    height: 85vh !important;
+    width: 90vw !important;
+}

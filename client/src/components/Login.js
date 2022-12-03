@@ -87,7 +87,7 @@ export default function Login() {
           </form>
           <p>
             <h5>Don't have account?</h5>
-            <NavLink to={"/signup"}>
+            <NavLink to={"/signup"} >
               <h5 className="txt">Sign up</h5>
             </NavLink>
           </p>

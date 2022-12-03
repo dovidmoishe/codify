@@ -1,5 +1,5 @@
 .card_container{
-    height: 100px;
+    height: 85px;
     width: 300px;
     background-color: #152C40;
     border-radius: 10px;
@@ -8,11 +8,13 @@
     margin-top: 10px;
     border: 1px solid #7C3AED;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 .card_wrapper{
-    justify-content: space-around;
-    display: flex;
-    margin: 50px 70px 0px 60px
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-row-gap: 10px;
+    margin: 35px 145px 0px 105px;
 }
 .card_container h3{
     color: #6998AB;

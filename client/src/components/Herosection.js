@@ -1,10 +1,10 @@
-import {React , useContext} from "react";
+import {React} from "react";
 import Nav from "./Nav";
 import "../css/hero_section.css";
 import { NavLink } from "react-router-dom";
-import { UserContext } from '../context/UserContext'
+
 export default function Herosection() {
-  const [details]=useContext(UserContext)
+  
   return (
     <>
       <div className="hero_container">

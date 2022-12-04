@@ -1,6 +1,5 @@
 //import dependencies
 import express from "express"
-import cors from "cors"
 import connectDb from "./config/db.js";
 import User from "./routes/User.js"
 import Code from "./routes/Code.js"

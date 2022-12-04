@@ -1,0 +1,12 @@
+.edit_container{
+    min-height: 100vh;
+    background-color: #1A374D;
+    overflow: hidden;
+}
+.edit{
+    margin-left: 60px;
+}
+.edit_section{
+    display: flex;
+    justify-content: space-between;
+}

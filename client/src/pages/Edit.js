@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
-import "../css/view.css";
-import { NavLink, useParams } from "react-router-dom";
+import "../css/edit.css";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Nav from "../components/Nav";
 import Axios from "axios";
 import "../css/editor.css";
 import "codemirror/lib/codemirror.css";
@@ -10,14 +12,17 @@ import Codemirror from "codemirror";
 import "codemirror/addon/edit/closetag";
 import "codemirror/addon/edit/closebrackets";
 import { UserContext } from "../context/UserContext";
-import { TbEdit } from "react-icons/tb";
 
-export default function View() {
+export default function Edit() {
+  const navigate = useNavigate();
   const [details] = useContext(UserContext);
   const inputRef = useRef(null);
-  const [user,setUser]=useState(false);
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
+  const handleChange = (e) => {
+    setTitle(e.target.value);
+  };
   const { id } = useParams();
   useEffect(() => {
     function init() {
@@ -31,43 +36,61 @@ export default function View() {
           lineNumbers: true,
         }
       );
+
+      //textarea value on change
+
+      inputRef.current.on("change", (instance, changes) => {
+        const code = instance.getValue("\n");
+        setDescription(code);
+      });
     }
     async function getCode() {
       const res = await Axios.get(`http://localhost:8000/view/${id}`);
       setTitle(res.data.title);
       if (details.token === res.data.u_id) {
         inputRef.current.setValue(res.data.code);
-        setUser(true)
       } else {
-        inputRef.current.setValue("//You haven't permission to view it//");
+        navigate("/login");
+        inputRef.current.setValue("//You haven't permission to edit it//");
         setTitle("No Permission");
-        setUser(false)
       }
     }
     getCode();
     init();
   }, []);
+
+  const update = async () => {
+    await Axios.patch(`http://localhost:8000/update/${id}`, {
+      title: title,
+      code: description,
+    });
+    toast.success("Successfully Updated", {
+      theme: "light",
+    });
+    navigate(`/${details.user}`);
+  };
+
   return (
-    <section className="view_container">
-      <div className="view">
-        <div className="header">
+    <section className="edit_container">
+      <Nav />
+      <div className="edit">
         <div className="code_title_wrapper">
           <input
             type="text"
             className="code_title"
             value={title}
+            onChange={handleChange}
             name="title"
-            readOnly
           ></input>
-          
         </div>
-        {user &&
-        <NavLink to={`/edit/${id}`}>
-        <div className="ico_wrap"><TbEdit className="ico"/></div>
-        </NavLink>
-}
-        </div>
-        <textarea className="view_area" id="txt" readOnly></textarea>
+        <section className="edit_section">
+          <textarea className="edit_area" id="txt"></textarea>
+          <div className="side_section">
+            <button className="save" onClick={update}>
+              Update
+            </button>
+          </div>
+        </section>
       </div>
     </section>
   );

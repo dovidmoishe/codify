@@ -6,7 +6,34 @@
 .view{
     margin-left: 60px;
 }
-.CodeMirror{
+.view_container .CodeMirror{
     height: 85vh !important;
     width: 90vw !important;
+}
+.header{
+    width: 90vw;
+    display: flex;
+    
+}
+.ico_wrap{
+    height: 40px;
+    width: 45px;
+    border-radius: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    margin-left: 15px;
+    background-color: #112435;
+}
+.ico_wrap:hover{
+    cursor: pointer;
+    background-color: #112435;
+    transition: 0.5s;
+    opacity: 0.7;
+}
+.ico{
+    color: #ADCBD7;
+    font-size: 30px;
+    font-weight: 100;
 }

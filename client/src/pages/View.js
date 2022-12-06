@@ -15,9 +15,9 @@ import { TbEdit } from "react-icons/tb";
 export default function View() {
   const [details] = useContext(UserContext);
   const inputRef = useRef(null);
-  const [user,setUser]=useState(false);
+  const [user, setUser] = useState(false);
   const [title, setTitle] = useState("");
-
+  const [sharable, setSharable] = useState(false);
   const { id } = useParams();
   useEffect(() => {
     function init() {
@@ -29,19 +29,22 @@ export default function View() {
           autoCloseTags: true,
           autoCloseBrackets: true,
           lineNumbers: true,
+          readOnly: true,
         }
       );
     }
     async function getCode() {
       const res = await Axios.get(`http://localhost:8000/view/${id}`);
       setTitle(res.data.title);
-      if (details.token === res.data.u_id) {
+      if (details.token === res.data.u_id || sharable) {
         inputRef.current.setValue(res.data.code);
-        setUser(true)
+        if (details.token === res.data.u_id) {
+          setUser(true);
+        }
       } else {
         inputRef.current.setValue("//You haven't permission to view it//");
         setTitle("No Permission");
-        setUser(false)
+        setUser(false);
       }
     }
     getCode();
@@ -51,21 +54,22 @@ export default function View() {
     <section className="view_container">
       <div className="view">
         <div className="header">
-        <div className="code_title_wrapper">
-          <input
-            type="text"
-            className="code_title"
-            value={title}
-            name="title"
-            readOnly
-          ></input>
-          
-        </div>
-        {user &&
-        <NavLink to={`/edit/${id}`}>
-        <div className="ico_wrap"><TbEdit className="ico"/></div>
-        </NavLink>
-}
+          <div className="code_title_wrapper">
+            <input
+              type="text"
+              className="code_title"
+              value={title}
+              name="title"
+              readOnly
+            ></input>
+          </div>
+          {user && (
+            <NavLink to={`/edit/${id}`}>
+              <div className="ico_wrap">
+                <TbEdit className="ico" />
+              </div>
+            </NavLink>
+          )}
         </div>
         <textarea className="view_area" id="txt" readOnly></textarea>
       </div>

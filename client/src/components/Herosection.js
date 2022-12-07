@@ -12,7 +12,7 @@ export default function Herosection() {
         <div className="container">
           <div className="wrapper">
             <h1 className="first">Introducing</h1>{" "}
-            <h1 className="Second">Noteify</h1>
+            <h1 className="Second">Codify</h1>
           </div>
           <p className="info">
             A platform to write , share and access your code anywhere at any
@@ -22,7 +22,7 @@ export default function Herosection() {
             <NavLink to="/login">
               <div className="btn1">Get Started</div>
             </NavLink>
-            <a href="https://github.com/roshan-acharya/noteify">
+            <a href="https://github.com/roshan-acharya/codify">
               <div className="btn2">View it on Github</div>
               </a>
             

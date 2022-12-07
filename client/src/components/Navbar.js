@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav>
          <NavLink to={"/"}>
         <div>
-            <h3 className='logo'>Noteify</h3>
+            <h3 className='logo'>Codify</h3>
         </div>
         </NavLink>
         

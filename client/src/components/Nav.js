@@ -8,7 +8,7 @@ export default function Nav() {
     <nav>
       <NavLink to={"/"}>
         <div>
-          <h3 className="logo">Noteify</h3>
+          <h3 className="logo">Codify</h3>
         </div>
       </NavLink>
       {!details.token && (

@@ -26,7 +26,6 @@ export const PostUser = async (req, res) => {
 export const CheckUser = async (req, res) => {
   const { user, password } = req.body;
   const isUser = await Users.findOne({ user: user, password: password });
-  console.log(isUser);
   if (isUser) {
     return res.status(200).json({ user: isUser.user, id: isUser._id });
   }

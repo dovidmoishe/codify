@@ -40,6 +40,7 @@ export default function View() {
         inputRef.current.setValue(res.data.code);
         if (details.token === res.data.u_id) {
           setUser(true);
+          console.log(user)
         }
       } else {
         inputRef.current.setValue("//You haven't permission to view it//");

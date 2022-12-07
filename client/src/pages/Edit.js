@@ -19,6 +19,8 @@ export default function Edit() {
   const inputRef = useRef(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [sharable, setSharable] = useState(false);
+  const [link, setLink] = useState("http://localhost:3000/editor");
 
   const handleChange = (e) => {
     setTitle(e.target.value);
@@ -47,6 +49,7 @@ export default function Edit() {
     async function getCode() {
       const res = await Axios.get(`http://localhost:8000/view/${id}`);
       setTitle(res.data.title);
+      setLink(`http://localhost:3000/view/${id}`)
       if (details.token === res.data.u_id) {
         inputRef.current.setValue(res.data.code);
       } else {
@@ -59,10 +62,20 @@ export default function Edit() {
     init();
   }, []);
 
+  const share = () => {
+    if (sharable === true) {
+      setSharable(false);
+    } else {
+      setSharable(true);
+    }
+    console.log(sharable)
+  };
+
   const update = async () => {
     await Axios.patch(`http://localhost:8000/update/${id}`, {
       title: title,
       code: description,
+      share: sharable,
     });
     toast.success("Successfully Updated", {
       theme: "light",
@@ -86,6 +99,23 @@ export default function Edit() {
         <section className="edit_section">
           <textarea className="edit_area" id="txt"></textarea>
           <div className="side_section">
+            <div className="btn_contain">
+              <div>
+                <h5>Share</h5>
+              </div>
+              <div className="containerr">
+                <label className="switch">
+                  <input type="checkbox" onClick={share} /> <div></div>
+                </label>
+              </div>
+            </div>
+            {sharable && (
+              <div className="share-container">
+                <p>
+                  {link.substring(0, 20)} {link.length > 15 && "..."}
+                </p>
+              </div>
+            )}
             <button className="save" onClick={update}>
               Update
             </button>

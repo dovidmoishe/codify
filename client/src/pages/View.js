@@ -17,7 +17,6 @@ export default function View() {
   const inputRef = useRef(null);
   const [user, setUser] = useState(false);
   const [title, setTitle] = useState("");
-  const [sharable, setSharable] = useState(false);
   const { id } = useParams();
   useEffect(() => {
     function init() {
@@ -36,11 +35,11 @@ export default function View() {
     async function getCode() {
       const res = await Axios.get(`http://localhost:8000/view/${id}`);
       setTitle(res.data.title);
-      if (details.token === res.data.u_id || sharable) {
+
+      if (details.token === res.data.u_id || res.data.share) {
         inputRef.current.setValue(res.data.code);
         if (details.token === res.data.u_id) {
           setUser(true);
-          console.log(user)
         }
       } else {
         inputRef.current.setValue("//You haven't permission to view it//");

@@ -47,9 +47,13 @@ export default function Editor() {
     init();
   }, []);
 
-  const share=()=>{
-    setSharable(true)
-  }
+  const share = () => {
+    if (sharable === true) {
+      setSharable(false);
+    } else {
+      setSharable(true);
+    }
+  };
   const Submit = async (e) => {
     e.preventDefault();
     if (!title || !description) {
@@ -65,12 +69,12 @@ export default function Editor() {
         code: description,
         share: sharable,
       });
+      
       if (res.status === 200) {
         toast.success("Successfully Saved", {
           theme: "light",
         });
         navigate(`/${details.user}`);
-        console.log(sharable);
       }
     } catch (err) {
       console.log(err);
@@ -99,10 +103,12 @@ export default function Editor() {
 
         <div className="side_section">
           <div className="btn_contain">
-            <div><h5>Sharable</h5></div>
+            <div>
+              <h5>Share</h5>
+            </div>
             <div className="containerr">
               <label className="switch">
-                <input type="checkbox" onClick={share}/> <div></div>
+                <input type="checkbox" onClick={share} /> <div></div>
               </label>
             </div>
           </div>

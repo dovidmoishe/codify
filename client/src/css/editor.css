@@ -65,8 +65,12 @@
   color: #adcbd7;
 }
 .side_section {
-  width: 30vh;
+  margin-right: 10px;
+  width: 17vw;
   height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .save {
   height: 50px;
@@ -87,8 +91,6 @@
   color: #adcbd7;
 }
 
-
-
 /** Switch
    -------------------------------------*/
 
@@ -107,7 +109,7 @@
   height: 1em;
   width: 2em;
   background: rgb(64, 104, 130, 0.2);
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.884);
   border-radius: 1em;
 }
 
@@ -131,9 +133,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
   width: 150px;
-  margin-bottom: 20px;
   margin-right: 5px;
   padding: 6px 0px 6px 0px;
   border-radius: 25px;
@@ -143,4 +143,27 @@
   cursor: pointer;
   margin-top: 20px;
   text-align: center;
+}
+.btn_contain h5 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+.share-container {
+  width: 90%;
+  height: 40px;
+  background-color: #152c40;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.share-container p{
+    color: #ADCBD7;
+    font-weight: 400;
 }

@@ -11,7 +11,6 @@ export default function Profile() {
   const [details] = useContext(UserContext);
   const navigate = useNavigate();
   const [loader, setLoader] = useState(true);
-  const [status, setStatus] = useState(true);
   const [data, setData] = useState();
   useEffect(() => {
     if (!details.token) {

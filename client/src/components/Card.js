@@ -7,7 +7,6 @@ import { ImCross } from 'react-icons/im';
 import { toast } from "react-toastify";
 export default function Card({title,code,id}) {
   const navigate = useNavigate();
-  const [details] = useContext(UserContext);
   const del=async ()=>{
     try{
     await Axios.delete(`http://localhost:8000/delete/${id}`)

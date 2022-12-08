@@ -1,2 +1,2 @@
-# noteify
+# codify
 Updating soon

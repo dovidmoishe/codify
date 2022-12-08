@@ -50,7 +50,7 @@ export default function Edit() {
     async function getCode() {
       const res = await Axios.get(`https://codify.cyclic.app/view/${id}`);
       setTitle(res.data.title);
-      setLink(`http://localhost:3000/view/${id}`);
+      setLink(`https://codi-fy.netlify.app/view/${id}`);
       if (details.token === res.data.u_id) {
         inputRef.current.setValue(res.data.code);
       } else {

@@ -14,6 +14,7 @@ import {
   import Share from './pages/Share';
   import View from './pages/View';
   import Edit from './pages/Edit';
+  import Loader from './pages/Loader'
 
 export default function Routes() {
   return (
@@ -34,6 +35,8 @@ export default function Routes() {
             <Route exact path="/view/:id" element={<View/>}> 
             </Route>
             <Route exact path="/edit/:id" element={<Edit/>}> 
+            </Route>
+            <Route exact path="/loader" element={<Loader/>}> 
             </Route>
         </Switch>
     </Router>

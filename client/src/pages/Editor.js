@@ -63,7 +63,7 @@ export default function Editor() {
       return;
     }
     try {
-      const res = await Axios.post("http://localhost:8000/postcode", {
+      const res = await Axios.post("https://codify.cyclic.app/postcode", {
         u_id: details.token,
         title: title,
         code: description,

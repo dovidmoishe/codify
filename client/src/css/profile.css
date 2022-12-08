@@ -10,15 +10,15 @@
 }
 .add{
     position: absolute;
-    top: 80%;
-    left: 96%;
+    top: 15%;
+    left: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 20px;
     font-size: 30px;
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 45px;
     background-color: #152C40;
     border-radius: 50%;
     border: 1px solid #7C3AED;

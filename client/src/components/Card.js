@@ -9,7 +9,7 @@ export default function Card({title,code,id}) {
   const navigate = useNavigate();
   const del=async ()=>{
     try{
-    await Axios.delete(`http://localhost:8000/delete/${id}`)
+    await Axios.delete(`https://codify.cyclic.app/delete/${id}`)
     toast.success("Successfully deleted", {
       theme: "light",
     });

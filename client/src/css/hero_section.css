@@ -26,6 +26,7 @@
 .info{
     font-size: 20px;
     color: #fff;
+    text-align: center;
 }
 .btnwrapper{
     margin-top: 50px;
@@ -48,4 +49,38 @@
     background-color: #152C40;
     border-radius: 5px;
     border: 1px solid #703EFF;
+}
+@media screen and (max-width:560px){
+    .wrapper h1{
+        font-size: 3rem;
+    }
+    
+}
+@media screen and (max-width:440px){
+    .wrapper h1{
+        margin-bottom: 25px;
+        font-size: 2.5rem;
+    }
+    .btnwrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 40px;
+    }
+    .info{
+        text-align: center;
+    }
+    .btn1{
+        text-align: center;
+        margin-left: 26px;
+        padding-left: 47px;
+        padding-right: 47px;
+    }
+    
+}
+@media screen and (max-width:400px){
+    .wrapper h1{
+        margin-bottom: 25px;
+        font-size: 2.2rem;
+    }
 }

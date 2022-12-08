@@ -17,6 +17,7 @@ export default function Edit() {
   const navigate = useNavigate();
   const [details] = useContext(UserContext);
   const inputRef = useRef(null);
+  const [loader, setLoader] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [sharable, setSharable] = useState(false);
@@ -47,9 +48,9 @@ export default function Edit() {
       });
     }
     async function getCode() {
-      const res = await Axios.get(`http://localhost:8000/view/${id}`);
+      const res = await Axios.get(`https://codify.cyclic.app/view/${id}`);
       setTitle(res.data.title);
-      setLink(`http://localhost:3000/view/${id}`)
+      setLink(`http://localhost:3000/view/${id}`);
       if (details.token === res.data.u_id) {
         inputRef.current.setValue(res.data.code);
       } else {
@@ -68,11 +69,18 @@ export default function Edit() {
     } else {
       setSharable(true);
     }
-    console.log(sharable)
+    console.log(sharable);
   };
 
+  const copy = () => {
+    console.log(link);
+    navigator.clipboard.writeText(link);
+    toast.success("Link Copied", {
+      theme: "light",
+    });
+  };
   const update = async () => {
-    await Axios.patch(`http://localhost:8000/update/${id}`, {
+    await Axios.patch(`https://codify.cyclic.app/update/${id}`, {
       title: title,
       code: description,
       share: sharable,
@@ -98,6 +106,7 @@ export default function Edit() {
         </div>
         <section className="edit_section">
           <textarea className="edit_area" id="txt"></textarea>
+
           <div className="side_section">
             <div className="btn_contain">
               <div>
@@ -110,11 +119,11 @@ export default function Edit() {
               </div>
             </div>
             {sharable && (
-              <div className="share-container">
+              <button className="share-container" onClick={copy}>
                 <p>
                   {link.substring(0, 20)} {link.length > 15 && "..."}
                 </p>
-              </div>
+              </button>
             )}
             <button className="save" onClick={update}>
               Update

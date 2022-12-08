@@ -6,6 +6,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import Axios from "axios";
 import Card from "./Card";
+import Loader from "../pages/Loader";
 import { MdAdd } from "react-icons/md";
 export default function Profile() {
   const [details] = useContext(UserContext);
@@ -22,7 +23,9 @@ export default function Profile() {
 
     const userCodes = async () => {
       setLoader(true);
-      const res = await Axios.get(`http://localhost:8000/get/${details.token}`);
+      const res = await Axios.get(
+        `https://codify.cyclic.app/get/${details.token}`
+      );
       const codes = res.data;
       setData(codes);
       setLoader(false);
@@ -32,27 +35,38 @@ export default function Profile() {
   }, []);
 
   return (
-    <section className="profile_container">
-      <Nav />
-      <h1>Your Codes</h1>
-      <section className="card_wrapper">
-        {loader && <div className="loader">Loading...</div>}
-        {!loader && data.length === 0 && (
-          <div className="loader">No Code Found</div>
-        )}
+    <section>
+      {loader && <Loader />}
 
-        {!loader &&
-          data.map((codes) => (
-            <NavLink to={`/view/${codes._id}`}>
-              <Card title={codes.title} code={codes.code} id={codes._id} />
-            </NavLink>
-          ))}
-      </section>
-      <NavLink to="/editor">
-        <div className="add">
-          <MdAdd />
-        </div>
-      </NavLink>
+      {!loader && (
+        <section className="profile_container">
+          <div>
+            <Nav />
+            <h1>Your Codes</h1>
+            <NavLink to="/editor">
+            <div className="add">
+              <MdAdd />
+            </div>
+          </NavLink>
+          </div>
+
+          <section className="card_wrapper">
+            {!loader && data.length === 0 && (
+              <div>
+                <div className="loader">No Code Found</div>
+              </div>
+            )}
+
+            {!loader &&
+              data.map((codes) => (
+                <NavLink to={`/view/${codes._id}`} id={codes._id}>
+                  <Card title={codes.title} code={codes.code} id={codes._id} />
+                </NavLink>
+              ))}
+          </section>
+
+        </section>
+      )}
     </section>
   );
 }

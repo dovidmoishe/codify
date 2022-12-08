@@ -53,9 +53,10 @@ export default function Profile() {
           <section className="card_wrapper">
             {!loader && data.length === 0 && (
               <div>
-                <div className="loader">No Code Found</div>
+                <div className="loaderr">No Code Found</div>
               </div>
-            )}
+            )
+            }
 
             {!loader &&
               data.map((codes) => (
